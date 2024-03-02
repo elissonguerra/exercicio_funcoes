@@ -11,20 +11,15 @@
 // O novo salário, após o aumento.
 
 var salario = parseFloat(prompt("Digite o seu salário atual"));
-var reajuste = 0;
-
 var percentualAumento = calcularPercentualAumento(salario);
-var salarioReajustado = salarioNovo(salario, aumento);
-reajuste = reajuste * 100
+var valorAumento = AumentoEmReais(salario, percentualAumento);
+var salarioReajustado = salarioNovo(salario, percentualAumento );
+
 
 console.log("O salário antes do reajuste era de R$ " + salario.toFixed(2));
-console.log("O reajuste foi de " + reajuste.toFixed(2) + "%");
-console.log("O valor do aumento foi de R$ " + aumento.toFixed(2));
-console.log("O novo salário é de R$ " + salarioNovo.toFixed(2));
-
-
-
-
+console.log("O reajuste foi de " + (percentualAumento * 100) + "%");
+console.log("O valor do aumento foi de R$ " + valorAumento.toFixed(2));
+console.log("O novo salário é de R$ " + salarioReajustado.toFixed(2));
 
 function calcularPercentualAumento(salario) {
     if (salario <= 2800) {
@@ -43,5 +38,9 @@ function aumento(salario, reajuste) {
 }
 
 function salarioNovo(salario, percentualAumento) {
-    return salario + percentualAumento;
+    return salario + (salario * percentualAumento);
+}
+
+function AumentoEmReais(salario, percentualAumento) {
+    return salario * percentualAumento 
 }
